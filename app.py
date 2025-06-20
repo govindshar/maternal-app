@@ -1,6 +1,6 @@
 import streamlit as st
 from utils.groq_chat import query_groq_llm
-from utils.ocr_utils import extract_text_from_image
+# from utils.ocr_utils import extract_text_from_image  # Disabled for now
 from langdetect import detect
 
 st.set_page_config(page_title="AI Maternal Health Assistant", layout="centered")
@@ -134,7 +134,7 @@ elif feature == "6. ASHA/ANM Note Summary":
     if file:
         st.image(file, width=300, caption="Uploaded Note")
         with st.spinner("Extracting text..."):
-            extracted = extract_text_from_image(file)
+            extracted = "OCR temporarily disabled. Please enter the text manually."
         st.text_area("✍️ Editable Text (OCR result)", extracted, key="editable_note", height=200)
         if st.button("Summarize Note"):
             prompt = f"You are a medical assistant. Summarize the following ASHA/ANM pregnancy field note into 3 lines:\n{st.session_state.editable_note}"
@@ -149,7 +149,7 @@ elif feature == "7. Lab/Prescription Explainer":
     if report_file:
         st.image(report_file, width=300, caption="Uploaded Document")
         with st.spinner("Reading image..."):
-            raw_text = extract_text_from_image(report_file)
+            raw_text = "OCR temporarily disabled. Please enter the text manually."
         st.text_area("✍️ Editable Lab/Medicine Text", raw_text, key="editable_report", height=200)
         explain_lang = st.radio("Explain in:", ["English", "Hindi"])
         if st.button("Explain this Report"):
