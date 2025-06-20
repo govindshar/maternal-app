@@ -3,3 +3,4 @@ requests==2.31.0
 pytesseract==0.3.10
 Pillow==10.1.0
 python-dotenv==1.0.1
+setuptools==68.2.2  # 🔥 Important: Fixes Pillow build bug on Streamlit
